@@ -11,6 +11,8 @@ namespace ECommerceStoreWebApi.Areas.HelpPage.Controllers
     /// </summary>
     public class HelpController : Controller
     {
+        public string ResponseDocumentation { get; set; }
+
         private const string ErrorViewName = "Error";
 
         public HelpController()

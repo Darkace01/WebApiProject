@@ -9,6 +9,7 @@ using ECommerceStoreWebApi.Areas.HelpPage.ModelDescriptions;
 
 namespace ECommerceStoreWebApi.Areas.HelpPage
 {
+
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
     /// </summary>

@@ -9,9 +9,14 @@ using System.Web.Http;
 
 namespace ECommerceStoreWebApi.Controllers
 {
+    /// <summary>
+    /// Product controller
+    /// </summary>
     public class ProductsController : ApiController
     {
-        // GET api/products
+        /// <summary>
+        /// Gets some very important data from the server.
+        /// </summary>
         public HttpResponseMessage Get()
         {
             using (ApplicationDbEntitties entities = new ApplicationDbEntitties())
@@ -21,7 +26,10 @@ namespace ECommerceStoreWebApi.Controllers
             }
         }
 
-        // GET api/products/{id}
+        /// <summary>
+        /// Looks up product data by ID.
+        /// </summary>
+        /// <param name="id">The ID of the data.</param>
         public Product Get(int id)
         {
             using (ApplicationDbEntitties entities = new ApplicationDbEntitties())
@@ -30,7 +38,9 @@ namespace ECommerceStoreWebApi.Controllers
             }
         }
 
-        // POST api/product
+        /// <summary>
+        /// Adds product to the database
+        /// </summary>
         public HttpResponseMessage Post(Product product)
         {
             try
@@ -53,7 +63,11 @@ namespace ECommerceStoreWebApi.Controllers
             }
         }
 
-        // PUT api/products/{id}
+        /// <summary>
+        /// Adds product by the given ID
+        /// </summary>
+        /// <param name="id">The ID of the data.</param>
+        /// <param name="product">The product to be added</param>
         public void Put(int id, [FromBody]Product product)
         {
             using (ApplicationDbEntitties entities = new ApplicationDbEntitties())
@@ -68,8 +82,10 @@ namespace ECommerceStoreWebApi.Controllers
                 entities.SaveChanges();
             }
         }
-        //Delete the product by the given Id
-        // DELETE api/product/{id}
+        /// <summary>
+        /// Deleted product by the given ID.
+        /// </summary>
+        /// <param name="id">The ID of the data.</param>
         public HttpResponseMessage Delete(int id)
         {
             try { 
