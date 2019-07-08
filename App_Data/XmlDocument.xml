@@ -488,7 +488,7 @@
         </member>
         <member name="M:ECommerceStoreWebApi.Controllers.ProductsController.Get">
             <summary>
-            Gets some very important data from the server.
+            Gets The List of product from the database.
             </summary>
         </member>
         <member name="M:ECommerceStoreWebApi.Controllers.ProductsController.Get(System.Int32)">
