@@ -77,7 +77,7 @@
 
             $('#btnRegister').click(function () {
                 $.ajax({
-                    url: '/api/products',
+                    url: '/api/v1/Product/save',
                     method: 'POST',
                     data: {
                         ItemName: $('#txtName').val(),

@@ -113,4 +113,3 @@ C:\Users\Latitude\source\repos\ECommerceStoreWebApi\obj\Debug\ECommerceStoreWebA
 C:\Users\Latitude\source\repos\ECommerceStoreWebApi\obj\Debug\ECommerceStoreWebApi.csprojAssemblyReference.cache
 C:\Users\Latitude\source\repos\ECommerceStoreWebApi\bin\FromHeaderAttribute.dll
 C:\Users\Latitude\source\repos\ECommerceStoreWebApi\bin\Swagger.Net.dll
-C:\Users\Latitude\source\repos\ECommerceStoreWebApi\bin\ECommerceStoreWebApi.xml

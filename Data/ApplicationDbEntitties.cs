@@ -12,22 +12,5 @@ namespace ECommerceStoreWebApi.Data
         public DbSet<Product> Products { get; set; }
     }
 
-    public class MyDbInitializer : DropCreateDatabaseAlways<ApplicationDbEntitties>
-    {
-        protected override void Seed(ApplicationDbEntitties context)
-        {
-            var product = new Product
-            {
-                ItemName = "Rice",
-                ItemPrice = 34,
-                Description = "Bag Of Rice",
-                Quantity = 34,
-
-            };
-            context.Products.Add(product);
-
-            context.SaveChanges();
-            base.Seed(context);
-        }
-    }
+    
 }

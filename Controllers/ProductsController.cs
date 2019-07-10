@@ -13,7 +13,7 @@ namespace ECommerceStoreWebApi.Controllers
     /// Product controller
     /// NOTE: This is version One (1
     /// </summary>
-    [RoutePrefix("api/v2/Product")]
+    [RoutePrefix("api/v1/Product")]
     public class ProductsController : ApiController
     {
         /// <summary>
