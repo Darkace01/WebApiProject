@@ -1,5 +1,4 @@
 ﻿using ECommerceStoreWebApi.Core;
-using ECommerceStoreWebApi.Core.Domain;
 using ECommerceStoreWebApi.Core.Repositories;
 using ECommerceStoreWebApi.Persistence.Repositories;
 

@@ -6,7 +6,7 @@ namespace ECommerceStoreWebApi.Persistence
     public class ECommerce : DbContext
     {
         public ECommerce()
-            : base("name=PlutoContext")
+            : base("name=ECommerce")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

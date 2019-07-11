@@ -1,36 +1,34 @@
 ﻿using ECommerceStoreWebApi.Core.Domain;
-using ECommerceStoreWebApi.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ECommerceStoreWebApi.Persistence;
 using System.Data.Entity;
+using ECommerceStoreWebApi.Core;
 
 namespace ECommerceStoreWebApi.Controllers
 {
+    [RoutePrefix("api/v1/Shop")]
     public class ShopController : ApiController
     {
-        private static ECommerce _Context;
-        readonly UnitOfWork uow = new UnitOfWork(_Context);
-
-        private readonly IRepository<Shop> repoShop;
+        private readonly IUnitOfWork _unitOfWork;
         
 
-        public ShopController(IRepository<Shop> repoShop)
+        public ShopController(IUnitOfWork unitOfWork)
         {
-            this.repoShop = repoShop;
+            _unitOfWork = unitOfWork;
         }
         /// <summary>
         /// Gets all the shops in the database
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public HttpResponseMessage Get()
         {
-            repoShop.GetAll().ToList();
-            uow.Complete();
+            _unitOfWork.Shops.GetAll();
+            _unitOfWork.Complete();
             return Get();
         }
         /// <summary>
@@ -38,10 +36,11 @@ namespace ECommerceStoreWebApi.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
+        [HttpGet]
         public HttpResponseMessage Get(int Id)
         {
-            repoShop.Get(Id);
-            uow.Complete();
+            _unitOfWork.Shops.Get(Id);
+            _unitOfWork.Complete();
             return Get(Id);
         }
         /// <summary>
@@ -49,45 +48,46 @@ namespace ECommerceStoreWebApi.Controllers
         /// 
         /// </summary>
         /// <param name="entity"></param>
+        [HttpPost]
+        [Route("save")]
         public void Add(Shop entity)
         {
             try
             {
-                Shop shop = new Shop
+                _unitOfWork.Shops.Add(new Shop
                 {
                     ShopName = entity.ShopName,
                     Category = entity.Category,
                     TotalProduct = entity.TotalProduct
-
-                };
-                uow.Complete();
+                });
+                _unitOfWork.Complete();
             }
             catch {
 
             }
         }
-
+        [HttpPut]
         public void Update(int id)
         {
             Shop model = new Shop();
-            Shop author = repoShop.Get(id);
+            Shop author = _unitOfWork.Shops.Get(id);
             if (author != null)
             {
                 model.ShopName = author.ShopName;
                 model.Category = author.Category;
                 model.TotalProduct = author.TotalProduct;
             }
-            uow.Complete();
+            _unitOfWork.Complete();
         }
 
         public void Remove(int id)
         {
-            Shop book = repoShop.Get(id);
+            Shop book = _unitOfWork.Shops.Get(id);
             if (book != null)
             {
-                repoShop.Remove(book);
+                _unitOfWork.Shops.Remove(book);
             }
-            uow.Complete();
+            _unitOfWork.Complete();
         }
     }
 }

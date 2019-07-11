@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body style="padding-top:20px">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="well">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <td colspan="2">
+                            Add Product
+                            <a class="btn btn-success pull-right" href="Login.html">Login</a>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Shop Name</td>
+                        <td><input type="text" id="txtName" placeholder="Shop Name" class="input-group input-sm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Category</td>
+                        <td><input type="number" id="txtCategory" placeholder="Category" class="input-group input-sm" /></td>
+                    </tr>
+                    <tr>
+                        <td>Total Product</td>
+                        <td><input type="number" id="txtTotalProduct" placeholder="Total Product"class="input-group input-sm" /></td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2">
+                            <input id="btnRegister" value="Register" class="btn btn-success" type="button" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4>Success</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h2>Registration Successful</h2>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-dismiss="modal" class="btn btn-success">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divError" class="alert alert-danger collapse">
+                <a id="linkClose" class="close" href="#">&times;</a>
+                <div id="divErrorText"></div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('linkClose').click(function () {
+                $('divError').hide('fade');
+            });
+
+            $('#btnRegister').click(function () {
+                $.ajax({
+                    url: '/api/v1/Shop/save',
+                    method: 'POST',
+                    data: {
+                        ShopName: $('#txtName').val(),
+                        Category: $('#txtCategory').val(),
+                        TotalProduct: $('#txtTotalProduct').val(),
+                    },
+                    success: function () {
+                        $('#successModal').modal('show');
+                    },
+                    error: function (jqXHR) {
+                        $('#divErrorText').text(jqXHR.responseText);
+                        $('#divError').show('fade');
+                    }
+                });
+
+
+            });
+        });
+    </script>
+</body>
+</html>
